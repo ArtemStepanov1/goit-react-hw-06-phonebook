@@ -68,6 +68,8 @@ export class Form extends Component {
                 style={{
                     width: "10vw",
                     marginTop: "32px",
+                    border: "2px solid lightgreen",
+                    borderRadius: "4px",
                 }}
                 >Add contact</button>
             </form>
