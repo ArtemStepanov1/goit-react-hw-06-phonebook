@@ -8,10 +8,14 @@ import { ContactsList } from "./ContactsList";
 
 export class App extends Component {
   state = {
-    contacts: [],
+    contacts: [{
+      id: "",
+      name: "",
+      number: "",
+    }],
     filter: '',
-    name: '',
-    number: ''
+    // name: '',
+    // number: ''
   }    
 
   addContact = ({name, number}) => {
