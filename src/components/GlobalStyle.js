@@ -33,7 +33,7 @@ export const GlobalStyle = createGlobalStyle`
 
     }
 
-    .delBtnIcon {
+    .delContactBtnIcon {
         fill: gray;
     }
   

@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-// import { MdClose } from "react-icons/md"
-
 
 export const ContactList = styled.ul`
     padding: 16px;
@@ -11,12 +9,11 @@ export const ContactItem = styled.li`
     border-bottom: 2px solid lightgray;
     display: flex;
     justify-content: space-between;
-    &:hover {
+    &:hover,
+    &:focus {
         border-bottom: 2px solid springgreen;
     };
-    // &:hover > button  {
-    //     border: 1px solid red;
-    // };
+
 `;
 
 export const DelContactBtn = styled.button`
@@ -26,7 +23,8 @@ export const DelContactBtn = styled.button`
     background-color: transparent;
     padding: 0;
     cursor: pointer;
-    &:hover .delBtnIcon {
+    &:hover .delContactBtnIcon,
+    &:focus .delContactBtnIcon {
         fill: tomato;
         transform: scale(1.25);
     };

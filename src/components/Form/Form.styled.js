@@ -17,8 +17,7 @@ export const NameInput = styled.input`
 export const ContactsFormBtn = styled.button`
     width: 10vw;
     margin-top: 32px;
-    border: 2px solid gray;
+    border: 2px solid lightgray;
     border-radius: 4px;
-    &:hover,
-    &:focus {border: 2px solid springgreen};
+    &:hover {border: 2px solid springgreen};
 `;

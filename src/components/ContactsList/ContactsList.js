@@ -1,4 +1,3 @@
-// import { BsFillXCircleFill } from "react-icons/bs";
 import { MdClose } from "react-icons/md"
 
 import {
@@ -8,8 +7,10 @@ import {
 } from "./ContactsList.styled"
 
 export const ContactsList = ({contacts, onDeleteContact}) => {
+    // console.log(contacts.length);
     return(
-        <ContactList>
+        <>
+        {contacts && <ContactList>
             {contacts.map(({id, name, number}) => (
               
                 <ContactItem key={id}>
@@ -19,11 +20,14 @@ export const ContactsList = ({contacts, onDeleteContact}) => {
                         onClick={() => onDeleteContact(id)}
                         >
                             <MdClose
-                                className="delBtnIcon"                            
+                                className="delContactBtnIcon"                            
                             />
                     </DelContactBtn>
                 </ContactItem>
             ))}
-        </ContactList>
+        </ContactList>}
+        </>
+
+        
     )
 }
