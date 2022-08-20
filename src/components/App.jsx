@@ -8,23 +8,19 @@ import { ContactsList } from "./ContactsList/ContactsList";
 
 export class App extends Component {
   state = {
-    contacts: [
-      // { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      // { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      // { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      // { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-    ],
+    contacts: [],
     filter: '',
   }    
 
   addContact = ({name, number}) => {
+    const contacts = this.state.contacts;
     const contact = {
       id: nanoid(),
       name,
       number,
     }
 
-    if(this.state.contacts.find( contact => contact.name === name)) {
+    if(contacts.find( contact => contact.name === name)) {
       return alert(`${name} is already in contacts`)
     }
 
@@ -44,10 +40,10 @@ export class App extends Component {
   }
 
   componentDidMount() {
-    const contacts = localStorage.getItem('contacts');
-    const parsedContacts = JSON.parse(contacts);
-
-    this.setState({ contacts: parsedContacts });
+    const storageContacts = localStorage.getItem('contacts');
+    if (storageContacts) {
+      this.setState({ contacts: JSON.parse(storageContacts) });
+    }
   }
 
   componentDidUpdate(prevState) {
@@ -59,10 +55,8 @@ export class App extends Component {
   render() {
     const {filter, contacts} = this.state;
 
-    const filteredContacts = contacts
-    ? contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase()))
-    : contacts;
+    const filteredContacts = contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase()));
 
     return (
       <>
@@ -96,6 +90,5 @@ export class App extends Component {
         <GlobalStyle />
       </>
     )
-  }
-    
+  }  
 };

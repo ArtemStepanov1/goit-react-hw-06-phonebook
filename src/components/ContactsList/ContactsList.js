@@ -7,10 +7,8 @@ import {
 } from "./ContactsList.styled"
 
 export const ContactsList = ({contacts, onDeleteContact}) => {
-    // console.log(contacts.length);
     return(
-        <>
-        {contacts && <ContactList>
+        <ContactList>
             {contacts.map(({id, name, number}) => (
               
                 <ContactItem key={id}>
@@ -25,9 +23,6 @@ export const ContactsList = ({contacts, onDeleteContact}) => {
                     </DelContactBtn>
                 </ContactItem>
             ))}
-        </ContactList>}
-        </>
-
-        
+        </ContactList>     
     )
 }
