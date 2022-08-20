@@ -1,18 +1,18 @@
 import { Component } from "react";
-import { Box } from 'theme-ui'
-import { GlobalStyle } from './GlobalStyle'
-import { Form } from './Form'
+import { Box } from 'theme-ui';
+import { GlobalStyle } from './GlobalStyle';
+import { ContactsForm } from "./Form/Form";
 import { nanoid } from "nanoid";
 import { Filter } from './Filter';
-import { ContactsList } from "./ContactsList";
+import { ContactsList } from "./ContactsList/ContactsList";
 
 export class App extends Component {
   state = {
     contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+      // { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      // { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      // { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      // { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
   }    
@@ -59,9 +59,10 @@ export class App extends Component {
   render() {
     const {filter, contacts} = this.state;
 
-    const filteredContacts = contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase()),
-    )
+    const filteredContacts = contacts
+    ? contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase()))
+    : contacts;
 
     return (
       <>
@@ -73,7 +74,7 @@ export class App extends Component {
           
           <h2>Phonebook</h2>
           
-          <Form onSubmit={this.addContact}/>
+          <ContactsForm onSubmit={this.addContact}/>
           
           <h3
           style={{

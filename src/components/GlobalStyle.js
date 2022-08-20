@@ -32,5 +32,9 @@ export const GlobalStyle = createGlobalStyle`
         padding-inline-start: 0;
 
     }
+
+    .delBtnIcon {
+        fill: gray;
+    }
   
 `;

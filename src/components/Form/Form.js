@@ -1,6 +1,12 @@
 import { Component } from "react";
 
-export class Form extends Component {
+import {
+    FormWrapper,
+    NameInput,
+    ContactsFormBtn,
+} from "./Form.styled.js"
+
+export class ContactsForm extends Component {
     state = {    
         name: '',
         number: '',
@@ -23,24 +29,12 @@ export class Form extends Component {
 
     render() {
         return (
-            <form
-            style={{
-                display: "flex",
-                flexDirection: "column",
-                border: "1px solid gray",
-                padding: "16px",
-                borderRadius: "4px",
-                marginTop: "16px",
-                marginBottom: "32px",
-            }}
-
+            <FormWrapper
             onChange={this.handleChange}
             onSubmit={this.handleSubmit}
-
             > 
-
                 <p>Name</p>
-                <input
+                <NameInput
                     type="text"
                     name="name"
                     pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -48,10 +42,6 @@ export class Form extends Component {
                     required
                     value={this.state.name}
                     onChange={this.handleChange}
-
-                    style={{
-                        marginBottom: "8px"
-                    }}
                 />
                 <p>Phone number</p>
                 <input
@@ -63,16 +53,10 @@ export class Form extends Component {
                     value={this.state.number}
                     onChange={this.handleChange}
                 />
-                <button
+                <ContactsFormBtn
                 type="submit"
-                style={{
-                    width: "10vw",
-                    marginTop: "32px",
-                    border: "2px solid lightgreen",
-                    borderRadius: "4px",
-                }}
-                >Add contact</button>
-            </form>
+                >Add contact</ContactsFormBtn>
+            </FormWrapper>
         )
     }
 }
