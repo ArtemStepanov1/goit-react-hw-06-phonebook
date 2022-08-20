@@ -14,15 +14,18 @@ export class App extends Component {
 
   addContact = ({name, number}) => {
     const contacts = this.state.contacts;
+
+    const availabilityCheck = contacts.find( contact => contact.name === name);
+
+    if(availabilityCheck) {
+      return alert(`${name} is already in contacts`)
+    }
+
     const contact = {
       id: nanoid(),
       name,
       number,
-    }
-
-    if(contacts.find( contact => contact.name === name)) {
-      return alert(`${name} is already in contacts`)
-    }
+    };
 
     this.setState(({contacts}) => ({
       contacts: [contact, ...contacts]
