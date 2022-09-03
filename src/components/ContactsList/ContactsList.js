@@ -1,5 +1,4 @@
 import { MdClose } from "react-icons/md"
-
 import {
     ContactList,
     ContactItem,
