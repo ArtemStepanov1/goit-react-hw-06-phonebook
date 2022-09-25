@@ -1,15 +1,17 @@
-import PropTypes from 'prop-types';
 import { useState } from "react";
+import { useDispatch } from 'react-redux';
+import { addContact } from 'redux/contactsSlice';
 import {
     FormWrapper,
     NameInput,
     ContactsFormBtn,
 } from "./Form.styled.js";
 
-export const ContactsForm = ({ onSubmit }) => {
+export const ContactsForm = () => {
 
     const [name, setName] = useState('')
     const [number, setNumber] = useState('')
+    const dispatch = useDispatch();
 
     const handleChange = e => {
         const {name, value} = e.currentTarget;
@@ -29,7 +31,7 @@ export const ContactsForm = ({ onSubmit }) => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        onSubmit(name, number);
+        dispatch(addContact(name, number));
         reset();
     };
 
@@ -37,7 +39,6 @@ export const ContactsForm = ({ onSubmit }) => {
         setName('');
         setNumber('');
     };
-
     
     return (
         <FormWrapper
@@ -69,7 +70,3 @@ export const ContactsForm = ({ onSubmit }) => {
         </FormWrapper>
     )
 }
-
-ContactsForm.propTypes = {
-    onSubmit: PropTypes.func.isRequired,
-};

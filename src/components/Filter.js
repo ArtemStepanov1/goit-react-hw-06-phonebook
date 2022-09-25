@@ -1,6 +1,9 @@
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from "react-redux"
+import { change } from 'redux/filterSlice'
 
-export const Filter = ({value, onChange}) => {
+export const Filter = () => {
+    const dispatch = useDispatch();
+    const filter = useSelector(state => state.filter)
     return(
         <label
         style={{
@@ -14,14 +17,9 @@ export const Filter = ({value, onChange}) => {
             Find contact by name 
             <input 
             type="text" 
-            value={value}
-            onChange={onChange}
+            value={filter}
+            onChange={e => dispatch(change(e.target.value))}
             ></input>
         </label>
     )
 }
-
-Filter.propTypes = {
-    value: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired,
-  };
